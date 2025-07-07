@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Odds Reais - Nipobet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      color: #2ecc71;
+    }
+    .match {
+      background: #222;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+    .odds {
+      color: #2ecc71;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Odds Reais de Futebol - Nipobet</h1>
+  <div id="games">Carregando partidas...</div>
+
+  <script>
+    const apiKey = "a686083eb33fbf897c72bd47c1ddec9b";
+    const url = `https://api.the-odds-api.com/v4/sports/soccer_brazil_campeonato/odds/?regions=br&markets=h2h&apiKey=${apiKey}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("games");
+        container.innerHTML = "";
+
+        data.forEach(game => {
+          const home = game.home_team;
+          const away = game.away_team;
+          const odds = game.bookmakers?.[0]?.markets?.[0]?.outcomes;
+
+          if (!odds) return;
+
+          const html = `
+            <div class="match">
+              <strong>${home} 🆚 ${away}</strong><br><br>
+              <span class="odds">${odds[0].name}: ${odds[0].price}</span><br>
+              <span class="odds">${odds[1].name}: ${odds[1].price}</span><br>
+              <span class="odds">${odds[2].name}: ${odds[2].price}</span>
+            </div>
+          `;
+
+          container.innerHTML += html;
+        });
+      })
+      .catch(err => {
+        console.error("Erro:", err);
+        document.getElementById("games").innerHTML = "Erro ao carregar odds.";
+      });
+  </script>
+
+</body>
+</html>
