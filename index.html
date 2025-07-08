@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roleta da Zoação</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #1f1c2c, #928dab);
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .roleta-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+
+    .roleta {
+      width: 100%;
+      height: 100%;
+      border: 10px solid #fff;
+      border-radius: 50%;
+      border-top: 10px solid red;
+      border-right: 10px solid yellow;
+      border-bottom: 10px solid lime;
+      border-left: 10px solid cyan;
+      box-shadow: 0 0 30px #000;
+      transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .ponteiro {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 30px solid #fff;
+    }
+
+    button {
+      margin-top: 40px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #000;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff1a1a;
+    }
+
+    .frase {
+      margin-top: 30px;
+      font-size: 1.5rem;
+      text-align: center;
+      max-width: 90%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Roleta da Zoação 😈</h1>
+  <div class="roleta-container">
+    <div class="ponteiro"></div>
+    <div class="roleta" id="roleta"></div>
+  </div>
+  <button onclick="girar()">Girar Roleta</button>
+  <div class="frase" id="frase"></div>
+
+  <audio id="som" src="https://www.myinstants.com/media/sounds/trollololol.mp3"></audio>
+
+  <script>
+    const frases = [
+      "João é tão lerdo que o Wi-Fi foge dele.",
+      "Iago só perde no x1 porque o controle está quebrado (segundo ele).",
+      "João já perdeu no par ou ímpar sozinho.",
+      "Iago achou que HTML era nome de jogo.",
+      "João tentou clicar no botão 'Qualquer tecla' e travou.",
+      "Iago é o único que perde no tutorial.",
+      "João é tão zueiro que até a Alexa manda ele calar a boca.",
+      "Iago tem medo do ventilador no 3.",
+      "João tentou hackear o Google usando o Paint.",
+      "Iago disse que vai virar hacker... do Free Fire."
+    ];
+
+    const roleta = document.getElementById("roleta");
+    const frase = document.getElementById("frase");
+    const som = document.getElementById("som");
+
+    function girar() {
+      const deg = 3600 + Math.floor(Math.random() * 360); // 10 voltas + rotação aleatória
+      roleta.style.transform = `rotate(${deg}deg)`;
+
+      // Toca som
+      som.currentTime = 0;
+      som.play();
+
+      // Mostra frase após tempo da rotação
+      setTimeout(() => {
+        const aleatoria = frases[Math.floor(Math.random() * frases.length)];
+        frase.innerText = aleatoria;
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
