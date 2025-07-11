@@ -1,35 +1,125 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Nipobet - Início</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Nipobet</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #121212;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffcc00;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .saldo {
+      background-color: #222;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+      color: #00ff99;
+      border-bottom: 1px solid #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .jogo {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 8px #000;
+      transition: 0.3s;
+    }
+
+    .jogo:hover {
+      transform: scale(1.02);
+    }
+
+    .times {
+      font-size: 20px;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .odds {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .odd {
+      background-color: #2e2e2e;
+      padding: 12px 25px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: #ffcc00;
+      cursor: pointer;
+      border: 1px solid #444;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .odd:hover {
+      background-color: #3a3a3a;
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Nipobet</h1>
-    <div class="saldo">Saldo: <span id="saldo">1000</span> Nips</div>
-  </header>
-  <main>
-    <h2>Escolha um Campeonato</h2>
-    <div class="campeonatos">
-      <button onclick="escolherCampeonato('soccer_epl')">🏴 Premier League</button>
-      <button onclick="escolherCampeonato('soccer_brazil_campeonato')">🇧🇷 Brasileirão</button>
-      <button onclick="escolherCampeonato('soccer_uefa_champs_league')">🏆 Champions League</button>
-      <button onclick="escolherCampeonato('basketball_nba')">🏀 NBA</button>
+
+  <header>Nipobet</header>
+
+  <div class="saldo">Saldo: 1.000 Nips</div>
+
+  <div class="container">
+
+    <div class="jogo">
+      <div class="times">🇧🇷 Flamengo x Palmeiras</div>
+      <div class="odds">
+        <div class="odd">1.90</div>
+        <div class="odd">3.20</div>
+        <div class="odd">4.00</div>
+      </div>
     </div>
-  </main>
-  <script>
-    function escolherCampeonato(id) {
-      localStorage.setItem('campeonatoSelecionado', id);
-      window.location.href = 'jogos.html';
-    }
-    if (!localStorage.getItem('nipobet_saldo')) {
-      localStorage.setItem('nipobet_saldo', '1000');
-    }
-    document.getElementById('saldo').textContent = localStorage.getItem('nipobet_saldo');
-  </script>
+
+    <div class="jogo">
+      <div class="times">🇪🇸 Real Madrid x Barcelona</div>
+      <div class="odds">
+        <div class="odd">2.10</div>
+        <div class="odd">3.00</div>
+        <div class="odd">3.50</div>
+      </div>
+    </div>
+
+    <div class="jogo">
+      <div class="times">🇫🇷 PSG x Lyon</div>
+      <div class="odds">
+        <div class="odd">1.75</div>
+        <div class="odd">3.40</div>
+        <div class="odd">5.20</div>
+      </div>
+    </div>
+
+  </div>
+
 </body>
 </html>
