@@ -1,0 +1,42 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #111;
+  color: #fff;
+}
+header {
+  background-color: #202020;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  color: #ff4d00;
+  margin: 0;
+}
+.saldo {
+  background: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+main {
+  padding: 20px;
+}
+#jogos h2 {
+  color: #ff4d00;
+}
+.jogo {
+  background-color: #1c1c1c;
+  border: 1px solid #333;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+footer {
+  background-color: #202020;
+  padding: 15px;
+  text-align: center;
+  color: #aaa;
+}
