@@ -1,0 +1,93 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #1e1e2f;
+  color: #ffffff;
+}
+
+header {
+  background-color: #ff6600;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.saldo {
+  background-color: #292940;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  color: #00ff99;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.jogo {
+  background-color: #2c2c3f;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.times {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.odds {
+  display: flex;
+  gap: 10px;
+}
+
+.odd {
+  flex: 1;
+  background-color: #3a3a55;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  color: #ffcc00;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.odd:hover {
+  background-color: #505071;
+}
+
+.aposta-box {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.aposta-box input {
+  padding: 10px;
+  width: 100px;
+  margin-right: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+.aposta-box button {
+  padding: 10px 20px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.mensagem {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #00e676;
+}

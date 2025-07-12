@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nipobet - Estilo Betano</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>Nipobet</header>
+<div class="saldo" id="saldo">Saldo: 1000 Nips</div>
+
+<div class="container" id="jogos-container">
+  <!-- Jogos serão inseridos aqui -->
+</div>
+
+<div class="aposta-box" id="aposta-box" style="display:none;">
+  <p id="jogo-selecionado"></p>
+  <input type="number" id="valor-aposta" placeholder="Valor (Nips)" min="1">
+  <button onclick="confirmarAposta()">Confirmar Aposta</button>
+</div>
+
+<div class="mensagem" id="mensagem"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
