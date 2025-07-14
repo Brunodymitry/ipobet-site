@@ -1,58 +1,47 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const jogosContainer = document.getElementById("jogos");
+document.addEventListener('DOMContentLoaded', async () => {
+  const jogosContainer = document.getElementById('jogos');
 
-  fetch("https://nipobet-api.vercel.app/api/odds")
-    .then(res => res.json())
-    .then(data => {
-      jogosContainer.innerHTML = ""; // Limpa antes de adicionar
+  try {
+    const response = await fetch('https://nipobet-api.vercel.app/api/odds');
+    const data = await response.json();
 
-      if (!data || !data.data || data.data.length === 0) {
-        jogosContainer.innerHTML = "<p>Nenhum jogo disponível no momento.</p>";
-        return;
-      }
+    if (!Array.isArray(data) || data.length === 0) {
+      jogosContainer.innerHTML = '<p>Nenhum jogo disponível no momento.</p>';
+      return;
+    }
 
-      data.data.forEach(jogo => {
-        const evento = jogo.teams ? `${jogo.teams[0]} vs ${jogo.teams[1]}` : "Jogo não identificado";
-        const oddCasa = jogo.sites[0]?.odds?.h2h?.[0] || "-";
-        const oddEmpate = jogo.sites[0]?.odds?.h2h?.[2] || "-";
-        const oddFora = jogo.sites[0]?.odds?.h2h?.[1] || "-";
-        const dataJogo = new Date(jogo.commence_time).toLocaleString("pt-BR");
+    data.forEach(jogo => {
+      const jogoDiv = document.createElement('div');
+      jogoDiv.classList.add('jogo');
 
-        const card = document.createElement("div");
-        card.classList.add("jogo");
-        card.innerHTML = `
-          <h3>${evento}</h3>
-          <p><strong>Data:</strong> ${dataJogo}</p>
-          <p>
-            <button onclick="apostar('${evento}', '${jogo.teams[0]}', ${oddCasa})">
-              ${jogo.teams[0]} (${oddCasa})
-            </button>
-            <button onclick="apostar('${evento}', 'Empate', ${oddEmpate})">
-              Empate (${oddEmpate})
-            </button>
-            <button onclick="apostar('${evento}', '${jogo.teams[1]}', ${oddFora})">
-              ${jogo.teams[1]} (${oddFora})
-            </button>
-          </p>
-        `;
-        jogosContainer.appendChild(card);
-      });
-    })
-    .catch(err => {
-      console.error("Erro ao carregar jogos:", err);
-      jogosContainer.innerHTML = "<p>Erro ao carregar os jogos.</p>";
+      jogoDiv.innerHTML = `
+        <h3>${jogo.sport_nice} - ${jogo.teams.join(' vs ')}</h3>
+        <p>Começa: ${new Date(jogo.commence_time).toLocaleString('pt-BR')}</p>
+        <div class="odds">
+          ${jogo.sites.slice(0, 1).map(site => `
+            <p><strong>${site.site_nice}</strong></p>
+            <button onclick="apostar('${jogo.teams[0]}', ${site.odds.h2h[0]}, '${jogo.id}')">${jogo.teams[0]} - ${site.odds.h2h[0]}</button>
+            <button onclick="apostar('Empate', ${site.odds.h2h[2] || 0}, '${jogo.id}')">Empate - ${site.odds.h2h[2] || 'N/A'}</button>
+            <button onclick="apostar('${jogo.teams[1]}', ${site.odds.h2h[1]}, '${jogo.id}')">${jogo.teams[1]} - ${site.odds.h2h[1]}</button>
+          `).join('')}
+        </div>
+      `;
+
+      jogosContainer.appendChild(jogoDiv);
     });
+
+  } catch (error) {
+    console.error('Erro ao buscar jogos:', error);
+    jogosContainer.innerHTML = '<p>Erro ao carregar jogos.</p>';
+  }
 });
 
-function apostar(jogo, time, odd) {
-  const valor = prompt(`Você quer apostar quantos Nips em ${time}?`);
-  const valorNum = parseFloat(valor);
-
-  if (isNaN(valorNum) || valorNum <= 0) {
-    alert("Valor inválido.");
+function apostar(time, odd, jogoId) {
+  const valor = prompt(`Quanto deseja apostar em ${time}?`);
+  if (!valor || isNaN(valor) || Number(valor) <= 0) {
+    alert('Valor inválido.');
     return;
   }
 
-  alert(`Aposta feita: ${valorNum} Nips em ${time} no jogo ${jogo} (odd ${odd})`);
-  // Aqui você pode salvar no localStorage ou no backend
+  alert(`Aposta de ${valor} Nips em ${time} com odd ${odd} registrada! (Simulado)`);
 }
