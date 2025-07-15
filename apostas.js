@@ -9,9 +9,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   try {
     const response = await fetch('https://nipobet-api.vercel.app/api/odds');
-    const jogos = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
+    }
 
-    if (!Array.isArray(jogos) || jogos.length === 0) throw new Error();
+    const jogos = await response.json();
+    console.log("✅ Dados recebidos da API:", jogos);
+
+    if (!Array.isArray(jogos) || jogos.length === 0) {
+      throw new Error("Nenhum jogo encontrado.");
+    }
 
     jogosContainer.innerHTML = "";
     jogos.forEach(jogo => {
@@ -34,8 +42,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
       jogosContainer.appendChild(card);
     });
+
   } catch (e) {
-    jogosContainer.innerHTML = "<p>❌ Não foi possível carregar os jogos agora.</p>";
+    console.error("❌ Erro ao carregar jogos:", e);
+    jogosContainer.innerHTML = `<p style="color: red;">Erro: ${e.message}</p>`;
   }
 });
 
@@ -56,6 +66,5 @@ function apostar(time, odd) {
   localStorage.setItem('saldo', saldoAtual.toFixed(2));
   document.getElementById('saldo').textContent = saldoAtual.toFixed(2);
 
-  alert(`Aposta confirmada!
-${valor} Nips em ${time} (odd ${odd})`);
+  alert(`Aposta confirmada!\n${valor} Nips em ${time} (odd ${odd})`);
 }
