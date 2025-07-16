@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Nipobet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="https://i.imgur.com/Iax0mIR.png" alt="Logo Nipobet" class="logo" />
+    <h2>Entrar no Nipobet</h2>
+    <input type="email" id="login-email" placeholder="E-mail" />
+    <input type="password" id="login-senha" placeholder="Senha" />
+    <button onclick="login()">Entrar</button>
+    <p><a href="cadastro.html">Cadastrar-se</a> | <a href="#" onclick="recuperarSenha()">Esqueci minha senha</a></p>
+  </div>
+  <script src="firebase-config.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
