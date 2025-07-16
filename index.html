@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nipobet - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1>🎯 Nipobet</h1>
+    <p>Use seu e-mail para acessar</p>
+
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Senha" />
+    <div class="btn-group">
+      <button onclick="login()">Entrar</button>
+      <button onclick="register()">Cadastrar</button>
+    </div>
+    <button class="link-btn" onclick="sendPasswordReset()">Esqueci minha senha</button>
+    <div class="divider">ou</div>
+    <button onclick="googleLogin()">Entrar com Google</button>
+    <p id="message"></p>
+  </div>
+  <script type="module" src="auth.js"></script>
+</body>
+</html>

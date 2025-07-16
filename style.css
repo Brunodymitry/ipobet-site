@@ -1,0 +1,48 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0D0D0D;
+  color: #FDFDFD;
+}
+.login-container, .dashboard {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 20px;
+  background: #1B1B1B;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  text-align: center;
+}
+input {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+}
+button {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  background-color: #C0392B;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #A93226;
+}
+.link-btn {
+  background: none;
+  border: none;
+  color: #FDFDFD;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.divider {
+  margin: 20px 0;
+  font-size: 14px;
+  color: #888;
+}
