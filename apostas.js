@@ -4,33 +4,29 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('username').textContent = username;
   document.getElementById('saldo').textContent = saldo.toFixed(2);
 
-  const jogosContainer = document.getElementById('jogos');
-  jogosContainer.innerHTML = "<p>Carregando jogos...</p>";
-
-  // Lista simulada de jogos
   const jogos = [
     {
-      equipes: ["Real Madrid", "Barcelona"],
-      horario: "2025-07-20T18:00:00Z",
-      odds: [2.10, 3.20, 2.80]
+      equipes: ["Flamengo", "Palmeiras"],
+      data: "2025-07-20T20:00:00",
+      odds: [2.1, 3.3, 3.0] // casa, empate, fora
     },
     {
-      equipes: ["Manchester City", "Liverpool"],
-      horario: "2025-07-21T16:30:00Z",
-      odds: [2.40, 3.00, 2.90]
+      equipes: ["Corinthians", "São Paulo"],
+      data: "2025-07-21T18:30:00",
+      odds: [2.5, 3.0, 2.8]
     },
     {
-      equipes: ["PSG", "Marseille"],
-      horario: "2025-07-22T19:45:00Z",
-      odds: [1.80, 3.40, 4.00]
+      equipes: ["Grêmio", "Internacional"],
+      data: "2025-07-22T19:00:00",
+      odds: [2.9, 2.9, 2.9]
     }
   ];
 
+  const jogosContainer = document.getElementById('jogos');
   jogosContainer.innerHTML = "";
 
   jogos.forEach(jogo => {
-    const hora = new Date(jogo.horario).toLocaleString("pt-BR");
-
+    const hora = new Date(jogo.data).toLocaleString();
     const card = document.createElement('div');
     card.className = 'jogo';
     card.innerHTML = `
@@ -54,6 +50,7 @@ function apostar(time, odd) {
     alert("Valor inválido.");
     return;
   }
+
   if (valor > saldoAtual) {
     alert("Saldo insuficiente.");
     return;
