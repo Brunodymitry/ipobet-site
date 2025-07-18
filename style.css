@@ -1,0 +1,46 @@
+
+body {
+  background: #101820;
+  color: #FDFDFD;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #101820;
+  border-radius: 10px;
+}
+.logo {
+  height: 80px;
+  display: block;
+  margin: 10px auto;
+}
+input, button {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+button {
+  background: #C0392B;
+  color: white;
+  cursor: pointer;
+}
+.botoes button {
+  margin: 5px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #0A0F1A;
+}
+.perfil {
+  color: #FDFDFD;
+}

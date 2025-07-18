@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro - Nipobet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="https://i.imgur.com/h3C4BsI.png" alt="Logo Nipobet" class="logo" />
+    <h2>Criar Conta</h2>
+    <input type="text" id="cadastro-username" placeholder="Nome de usuário" />
+    <button onclick="cadastrar()">Cadastrar</button>
+    <p><a href="index.html">Voltar ao login</a></p>
+  </div>
+  <script>
+    function cadastrar() {
+      const nome = document.getElementById('cadastro-username').value.trim();
+      if (nome) {
+        localStorage.setItem('username', nome);
+        localStorage.setItem('saldo', '1000');
+        window.location.href = 'apostas.html';
+      } else {
+        alert('Digite um nome válido.');
+      }
+    }
+  </script>
+</body>
+</html>
