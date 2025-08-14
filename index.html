@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Odds MVP</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Odds MVP</h1>
+    <p>Odds reais via The Odds API (somente exibição, sem apostas).</p>
+  </header>
+
+  <section class="controls container">
+    <label>
+      Esporte/Liga:
+      <select id="sportSelect"></select>
+    </label>
+    <button id="refreshBtn">Atualizar</button>
+    <span id="status"></span>
+  </section>
+
+  <main class="container" id="list"></main>
+
+  <footer class="container">
+    <small>Fuso horário: America/Sao_Paulo • Atualize a cada ~1min para economizar créditos.</small>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
